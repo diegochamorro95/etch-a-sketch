@@ -22,15 +22,14 @@ function createGrid(rows, columns) {
             square.classList.add('square');
             square.style.width = `${squareSize}px`;
             square.style.height = `${squareSize}px`;
-              // Add hover event listener to change color when hovered
+             
               square.addEventListener('mouseover', function() {
                   square.style.backgroundColor = getRandomColor();
-              });
+                });
               square.addEventListener('mouseout', function () {
-                setTimeout(() => {
-                    square.style.backgroundColor = "white";  // Fade to white
-                }, 250);  // Delay of 500ms before changing to white
-            });
+                setTimeout(() => { square.style.backgroundColor = "white";  }, 250);  
+                });
+                
             row.appendChild(square);
         }
         container.appendChild(row);
