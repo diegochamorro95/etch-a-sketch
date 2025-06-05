@@ -3,6 +3,12 @@ const container = document.querySelector("#squares-container");
 let rowNumber = 16;
 let columnNumber = 16;
 
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
 function createGrid(rows, columns) {
     container.innerHTML = ''; 
@@ -16,6 +22,15 @@ function createGrid(rows, columns) {
             square.classList.add('square');
             square.style.width = `${squareSize}px`;
             square.style.height = `${squareSize}px`;
+              // Add hover event listener to change color when hovered
+              square.addEventListener('mouseover', function() {
+                  square.style.backgroundColor = getRandomColor();
+              });
+              square.addEventListener('mouseout', function () {
+                setTimeout(() => {
+                    square.style.backgroundColor = "white";  // Fade to white
+                }, 250);  // Delay of 500ms before changing to white
+            });
             row.appendChild(square);
         }
         container.appendChild(row);
