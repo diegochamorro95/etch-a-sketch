@@ -1,0 +1,96 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    margin: auto;
+}
+body {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.square {
+    height: 40px;
+    width: 40px;
+    border-style:solid;
+    border-color:black;
+    border-width: 0.2px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transition: all 2500ms;
+    box-sizing: border-box;
+    aspect-ratio: 1/1;
+}
+#squares-container {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 960px;
+    height: auto;
+    overflow: hidden;
+}
+
+.row {
+    display:flex;
+    justify-content: center;
+}
+.square:hover {
+    background-color: black;
+    transition: all 0s;
+}
+.customBtn {
+    position: relative;
+    margin-top: 32px;
+    font-size: 16px;
+    border-style: none;
+    padding: 1em;
+    width: max-content;
+    border-radius: 32px;
+    text-align: center;
+    position: relative;
+}
+/* button border effect */
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits:false;
+}
+.customBtn::after{
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+}
+
+.customBtn:hover::after{
+    --angle: 0deg;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff3e41,#ff8a43,	#ffeb7f, #00c9a7, #007ea7,#ff3e41);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 2px;
+    border-radius: 32px;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from{
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
